@@ -1,12 +1,12 @@
+using System.Net;
 using Core.Search;
-using Image = SixLabors.ImageSharp.Image;
 
 namespace Core.Api;
 
 public class ServerBearSearching : IHighlightSearch
 {
     private readonly Uri _api;
-
+    
     public ServerBearSearching(Uri api)
     {
         _api = api;
@@ -16,11 +16,9 @@ public class ServerBearSearching : IHighlightSearch
     {
         HttpClient client = new();
         HttpResponseMessage postResponse = await client.PostAsync(_api, new ByteArrayContent(image));
-        HttpResponseMessage getResponse = await client.GetAsync(_api);
-        string bearFoundResponse = await getResponse.Content.ReadAsStringAsync();
-        bool bearFound = Convert.ToBoolean(bearFoundResponse);
+        bool bearFound = postResponse.StatusCode != HttpStatusCode.NoContent;
         Stream stream = await postResponse.Content.ReadAsStreamAsync();
-        Image highlightedImage = await Image.LoadAsync(stream);
+        Image highlightedImage = new Bitmap(stream);
         return new ImageSearchResult(bearFound, highlightedImage);
     }
 }
