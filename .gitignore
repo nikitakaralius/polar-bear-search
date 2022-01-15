@@ -1,3 +1,4 @@
 **/.idea
 **/.vs
 /src/PolarBearSearch.WinForms/**/bin
+/src/PolarBearSearch.WinForms/**/obj
