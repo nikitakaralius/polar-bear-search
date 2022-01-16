@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.UploadButton = new System.Windows.Forms.Button();
             this.PictureBox = new System.Windows.Forms.PictureBox();
             this.Save = new System.Windows.Forms.Button();
@@ -89,8 +90,9 @@
             this.Controls.Add(this.Save);
             this.Controls.Add(this.PictureBox);
             this.Controls.Add(this.UploadButton);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "MainForm";
-            this.Text = "Form1";
+            this.Text = "Polar Bear Search";
             ((System.ComponentModel.ISupportInitialize)(this.PictureBox)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
