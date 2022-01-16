@@ -18,9 +18,12 @@ public class AnimatedSearch : IHighlightSearch
 
     public async Task<Maybe<Image>> BearOnImage(byte[] image)
     {
+        PictureBoxSizeMode initialSizeMode = _pictureBox.SizeMode;
+        _pictureBox.SizeMode = PictureBoxSizeMode.CenterImage;
         _pictureBox.Replace(image: Resources.LoadingCircle);
         Maybe<Image> bearOnImage = await _search.BearOnImage(image);
         _pictureBox.Clear();
+        _pictureBox.SizeMode = initialSizeMode;
         return bearOnImage;
     }
 }
