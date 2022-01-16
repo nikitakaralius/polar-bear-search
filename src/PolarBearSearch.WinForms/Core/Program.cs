@@ -11,7 +11,7 @@ namespace Core
             ApplicationConfiguration.Initialize();
             IConfiguration configuration = Configuration();
             Application.Run(new MainForm(
-                configuration.RemoteServer().Search(),
+                configuration.RemoteServer().FakeSuccessSearch(),
                 configuration.DialogFilter()));
         }
 
