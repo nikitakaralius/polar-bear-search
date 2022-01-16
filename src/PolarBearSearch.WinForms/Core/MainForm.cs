@@ -1,3 +1,4 @@
+using Core.Common;
 using Core.Extensions;
 using Core.Search;
 using Core.ViewModels;
@@ -10,8 +11,8 @@ namespace Core
 
         public MainForm(IHighlightSearch search)
         {
-            _search = new LabeledSearch(search, SearchingLabel);
             InitializeComponent();
+            _search = new LabeledSearch(search, SearchingLabel);
         }
 
         private async void UploadButton_Click(object sender, EventArgs e)
@@ -28,10 +29,10 @@ namespace Core
             {
                 return;
             }
-            (bool found, Image? image) = await _search.SearchOnAsync(openFileDialog.FileName);
-            if (found)
+            Maybe<Image> bearOnImage = await _search.SearchOnAsync(openFileDialog.FileName);
+            if (bearOnImage.HasValue)
             {
-                PictureBox.Replace(image);
+                PictureBox.Replace(bearOnImage.Value);
             }
             else
             {

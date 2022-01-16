@@ -1,3 +1,4 @@
+using Core.Common;
 using Core.Search;
 
 namespace Core.ViewModels;
@@ -14,11 +15,11 @@ public class LabeledSearch : IHighlightSearch
         _label.Visible = false;
     }
 
-    public async Task<ImageSearchResult> SearchOnAsync(byte[] image)
+    public async Task<Maybe<Image>> SearchOnAsync(byte[] image)
     {
         _label.Visible = true;
-        ImageSearchResult searchResult = await _search.SearchOnAsync(image);
+        Maybe<Image> bearOnImage = await _search.SearchOnAsync(image);
         _label.Visible = false;
-        return searchResult;
+        return bearOnImage;
     }
 }

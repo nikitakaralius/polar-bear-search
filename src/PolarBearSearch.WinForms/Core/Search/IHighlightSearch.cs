@@ -1,6 +1,8 @@
+using Core.Common;
+
 namespace Core.Search;
 
 public interface IHighlightSearch
 {
-    Task<ImageSearchResult> SearchOnAsync(byte[] image);
+    Task<Maybe<Image>> SearchOnAsync(byte[] image);
 }
