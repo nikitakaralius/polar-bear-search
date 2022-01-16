@@ -1,7 +1,6 @@
-using Core.Api;
 using Core.Extensions;
 using Core.Search;
-using Microsoft.Extensions.Configuration;
+using Core.ViewModels;
 
 namespace Core
 {
@@ -11,7 +10,7 @@ namespace Core
 
         public MainForm(IHighlightSearch search)
         {
-            _search = search;
+            _search = new LabeledSearch(search, SearchingLabel);
             InitializeComponent();
         }
 
@@ -32,7 +31,7 @@ namespace Core
             (bool found, Image? image) = await _search.SearchOnAsync(openFileDialog.FileName);
             if (found)
             {
-                PictureBox.RefreshWith(image);
+                PictureBox.Replace(image);
             }
             else
             {
