@@ -13,8 +13,8 @@ namespace Core
 
         public MainForm(IHighlightSearch search, IDialogFilter dialogFilter)
         {
-            _dialogFilter = dialogFilter;
             InitializeComponent();
+            _dialogFilter = dialogFilter;
             _search = new LabeledSearch(search, SearchingLabel);
         }
 
@@ -32,6 +32,7 @@ namespace Core
             {
                 return;
             }
+            PictureBox.Clear();
             Maybe<Image> bearOnImage = await _search.BearOnImageAsync(openFileDialog.FileName);
             if (bearOnImage.HasValue)
             {
