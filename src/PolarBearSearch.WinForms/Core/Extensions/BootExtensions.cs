@@ -1,4 +1,5 @@
 using Core.Api;
+using Core.IO;
 using Core.Search;
 using Microsoft.Extensions.Configuration;
 
@@ -11,4 +12,7 @@ internal static class BootExtensions
 
     internal static IHighlightSearch Search(this Uri remoteServer) => 
         new ServerBearSearching(remoteServer);
+
+    internal static IDialogFilter DialogFilter(this IConfiguration configuration) => 
+        new ConfigurationDialogFilter(configuration);
 }

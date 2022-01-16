@@ -9,10 +9,10 @@ namespace Core
         private static void Main()
         {
             ApplicationConfiguration.Initialize();
+            IConfiguration configuration = Configuration();
             Application.Run(new MainForm(
-                Configuration()
-                .RemoteServer()
-                .Search()));
+                configuration.RemoteServer().Search(),
+                configuration.DialogFilter()));
         }
 
         private static IConfiguration Configuration() => 

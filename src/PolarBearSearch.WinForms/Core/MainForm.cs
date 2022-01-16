@@ -1,5 +1,6 @@
 using Core.Common;
 using Core.Extensions;
+using Core.IO;
 using Core.Search;
 using Core.ViewModels;
 
@@ -8,9 +9,11 @@ namespace Core
     public partial class MainForm : Form
     {
         private readonly IHighlightSearch _search;
+        private readonly IDialogFilter _dialogFilter;
 
-        public MainForm(IHighlightSearch search)
+        public MainForm(IHighlightSearch search, IDialogFilter dialogFilter)
         {
+            _dialogFilter = dialogFilter;
             InitializeComponent();
             _search = new LabeledSearch(search, SearchingLabel);
         }
@@ -19,17 +22,17 @@ namespace Core
         {
             OpenFileDialog openFileDialog = new()
             {
-                Filter = "Images | *.png; *.jpg; *.JPEG; *.bmp"
+                Filter = _dialogFilter.OfOpen
             };
             if (openFileDialog.ShowDialog() != DialogResult.OK)
             {
                 return;
             }
-            if (openFileDialog.SafeFileName is null)
+            if (openFileDialog.FileName is null)
             {
                 return;
             }
-            Maybe<Image> bearOnImage = await _search.SearchOnAsync(openFileDialog.FileName);
+            Maybe<Image> bearOnImage = await _search.BearOnImageAsync(openFileDialog.FileName);
             if (bearOnImage.HasValue)
             {
                 PictureBox.Replace(bearOnImage.Value);
@@ -49,7 +52,7 @@ namespace Core
             SaveFileDialog saveFileDialog = new()
             {
                 FileName = "Bear",
-                Filter = "*.JPG | *.JPG;"
+                Filter = _dialogFilter.OfSave
             };
             if (saveFileDialog.ShowDialog() != DialogResult.OK)
             {
