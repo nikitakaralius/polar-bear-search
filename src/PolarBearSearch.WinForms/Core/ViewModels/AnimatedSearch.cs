@@ -1,4 +1,6 @@
 using Core.Common;
+using Core.Extensions;
+using Core.Properties;
 using Core.Search;
 
 namespace Core.ViewModels;
@@ -14,8 +16,9 @@ public class AnimatedSearch : IHighlightSearch
         _pictureBox = pictureBox;
     }
 
-    public async Task<Maybe<Image>> SearchOnAsync(byte[] image)
+    public async Task<Maybe<Image>> BearOnImage(byte[] image)
     {
-        return await _search.SearchOnAsync(image);
+        _pictureBox.Replace(image: Resources.LoadingCircle);
+        return await _search.BearOnImage(image);
     }
 }

@@ -4,5 +4,5 @@ namespace Core.Search;
 
 public interface IHighlightSearch
 {
-    Task<Maybe<Image>> SearchOnAsync(byte[] image);
+    Task<Maybe<Image>> BearOnImage(byte[] image);
 }

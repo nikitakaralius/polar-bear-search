@@ -15,7 +15,7 @@ namespace Core
         {
             InitializeComponent();
             _dialogFilter = dialogFilter;
-            _search = new LabeledSearch(search, SearchingLabel);
+            _search = new AnimatedSearch(search, PictureBox);
         }
 
         private async void UploadButton_Click(object sender, EventArgs e)

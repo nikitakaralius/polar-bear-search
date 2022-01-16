@@ -5,7 +5,7 @@ namespace Core.Substitutes;
 
 public class FakeSuccessSearch : IHighlightSearch
 {
-    public async Task<Maybe<Image>> SearchOnAsync(byte[] image)
+    public async Task<Maybe<Image>> BearOnImage(byte[] image)
     {
         await Task.Delay(1000);
         Stream stream = new MemoryStream(image);
