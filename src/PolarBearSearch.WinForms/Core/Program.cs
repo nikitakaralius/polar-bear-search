@@ -1,17 +1,23 @@
-using Core.Api;
+using Core.Extensions;
+using Microsoft.Extensions.Configuration;
 
 namespace Core
 {
     internal static class Program
     {
-        //todo: replace with config file
-        private static readonly Uri Api = new("https://polar-bear-server.herokuapp.com/api/detectBear");
-
         [STAThread]
         private static void Main()
         {
             ApplicationConfiguration.Initialize();
-            Application.Run(new MainForm(new ServerBearSearching(Api)));
+            Application.Run(new MainForm(
+                Configuration()
+                .RemoteServer()
+                .Search()));
         }
+
+        private static IConfiguration Configuration() => 
+            new ConfigurationBuilder()
+                .AddJsonFile("appsettings.json")
+                .Build();
     }
 }

@@ -1,5 +1,7 @@
+using Core.Api;
 using Core.Extensions;
 using Core.Search;
+using Microsoft.Extensions.Configuration;
 
 namespace Core
 {
