@@ -7,6 +7,7 @@
     <UseWindowsForms>true</UseWindowsForms>
     <ImplicitUsings>enable</ImplicitUsings>
     <ApplicationIcon>Resources\logo.ico</ApplicationIcon>
+    <AssemblyName>PolarBearSearch</AssemblyName>
   </PropertyGroup>
 
   <ItemGroup>
