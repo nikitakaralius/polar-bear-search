@@ -15,10 +15,17 @@ public class ServerBearSearching : IHighlightSearch
     public async Task<ImageSearchResult> SearchOnAsync(byte[] image)
     {
         HttpClient client = new();
-        HttpResponseMessage postResponse = await client.PostAsync(_api, new ByteArrayContent(image));
-        bool bearFound = postResponse.StatusCode != HttpStatusCode.NoContent;
-        Stream stream = await postResponse.Content.ReadAsStreamAsync();
-        Image highlightedImage = new Bitmap(stream);
-        return new ImageSearchResult(bearFound, highlightedImage);
+        HttpResponseMessage response = await client.PostAsync(_api, new ByteArrayContent(image));
+        Image highlightedImage = await HighlightedImage(response);
+        return new ImageSearchResult(IsBearFound(response), highlightedImage);
     }
+
+    private static async Task<Image> HighlightedImage(HttpResponseMessage response)
+    {
+        Stream stream = await response.Content.ReadAsStreamAsync();
+        return new Bitmap(stream);
+    }
+
+    private static bool IsBearFound(HttpResponseMessage response) => 
+        response.StatusCode != HttpStatusCode.NoContent;
 }
