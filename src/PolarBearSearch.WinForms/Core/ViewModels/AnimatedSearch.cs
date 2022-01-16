@@ -19,6 +19,8 @@ public class AnimatedSearch : IHighlightSearch
     public async Task<Maybe<Image>> BearOnImage(byte[] image)
     {
         _pictureBox.Replace(image: Resources.LoadingCircle);
-        return await _search.BearOnImage(image);
+        Maybe<Image> bearOnImage = await _search.BearOnImage(image);
+        _pictureBox.Clear();
+        return bearOnImage;
     }
 }

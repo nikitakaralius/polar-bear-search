@@ -15,7 +15,9 @@ namespace Core
         {
             InitializeComponent();
             _dialogFilter = dialogFilter;
-            _search = new AnimatedSearch(search, PictureBox);
+            _search = new AnimatedSearch(search, PictureBox)
+                .WhenStartSearching(SaveButton.Disable)
+                .OnSuccess(SaveButton.Enable);
         }
 
         private async void UploadButton_Click(object sender, EventArgs e)
