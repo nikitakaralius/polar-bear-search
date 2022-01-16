@@ -111,6 +111,9 @@
   <data name="SaveButton.Text" xml:space="preserve">
     <value>Сохранить</value>
   </data>
+  <data name="SaveButton.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
   <data name="&gt;&gt;SaveButton.Name" xml:space="preserve">
     <value>SaveButton</value>
   </data>
@@ -161,7 +164,7 @@
         xUAa4EouKCoB0n+A2CgltTiZgYHRAMjOLi8pAIozzgGyRZKywewNIHZRSJAzkH0EyOZLh7CvgNhJEPYT
         ELsI6Akg+wtIfTqYzcQBNgfClgGxS1IrQPYyOOcXVBZlpmeUKBhaWloqOKbkJ6UqBFcWl6TmFit45iXn
         FxXkFyWWpKYA1ULcBwaCEIWgENMAarTQZKAyAMUDhPU5EBy+jGJnEGIIkFxaVAZlMjIZE+YjzJgjwcDg
-        v5SBgeUPQsykl4FhgQ4DA/9UhJiaIQODgD4Dw745AMDGT/0ZOjZcAAAACXBIWXMAAAsNAAALDQHtB8As
+        v5SBgeUPQsykl4FhgQ4DA/9UhJiaIQODgD4Dw745AMDGT/0ZOjZcAAAACXBIWXMAAAsMAAALDAE/QCLI
         AAD+VElEQVR4Xuy9d5wcxbW3f9+f3/v6RqdrbDCYYKKxMeYaY0wSwQQBEhIIJJKIImcwWQJJKKCcc85Z
         QkJhJa0257w7Mzubc87KATi/c6r69FT31GxAEqBV/fF8uru6Z3ZW2t3ne6qqq/8FAAwGg8FgMJxmaBsN
         BoPBYDB0b7SNBoPBYDAYujfaRoPBYDAYDN0bbaPBYDAYDIbujbbRYDAYDAZD90bbaDAYDAaDoXujbTQY

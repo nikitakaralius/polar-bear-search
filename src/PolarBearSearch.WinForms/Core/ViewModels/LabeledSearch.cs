@@ -15,10 +15,10 @@ public class LabeledSearch : IHighlightSearch
         _label.Visible = false;
     }
 
-    public async Task<Maybe<Image>> SearchOnAsync(byte[] image)
+    public async Task<Maybe<Image>> BearOnImage(byte[] image)
     {
         _label.Visible = true;
-        Maybe<Image> bearOnImage = await _search.SearchOnAsync(image);
+        Maybe<Image> bearOnImage = await _search.BearOnImage(image);
         _label.Visible = false;
         return bearOnImage;
     }

@@ -13,7 +13,7 @@ public class ServerBearSearching : IHighlightSearch
         _api = api;
     }
     
-    public async Task<Maybe<Image>> SearchOnAsync(byte[] image)
+    public async Task<Maybe<Image>> BearOnImage(byte[] image)
     {
         HttpClient client = new();
         HttpResponseMessage response = await client.PostAsync(_api, new ByteArrayContent(image));
